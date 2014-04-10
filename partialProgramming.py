@@ -41,6 +41,7 @@ def simpleFunc(a,b,c,d,e,f,g = 100):
     print (a,b,c,d,e,f,g)
 
 """ 
+#generic curry in python (littleQ version, not wrok)
 def curry(func, *args, **kwargs):
     def curried(*args, **kwargs):
         if not args and not kwargs:
@@ -49,7 +50,8 @@ def curry(func, *args, **kwargs):
     return curried
 """
 
-#generic curry in python
+
+#generic curry in python (original version)
 def curry(func):
     def g(*myArgs, **myKwArgs):
         def f(*args, **kwArgs):
@@ -62,8 +64,6 @@ def curry(func):
                 func(*myArgs, **myKwArgs)
         return f
     return g
-
-
 
 
 print "----curry the function------"
