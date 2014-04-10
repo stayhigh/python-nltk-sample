@@ -48,6 +48,8 @@ def curry(func, *args, **kwargs):
         return functools.partial(func, *args, **kwargs)
     return curried
 """
+
+#generic curry in python
 def curry(func):
     def g(*myArgs, **myKwArgs):
         def f(*args, **kwArgs):
@@ -61,18 +63,17 @@ def curry(func):
         return f
     return g
 
+
+
+
 print "----curry the function------"
 f = curry(simpleFunc) # curry the 1st parameter into function c1
-
 c1 = f(1)
-c1(b=2,d=3)
-
-"""
-c2 = c1(b=2,d=4)
-
-c3 = c2(3)(f=6)(e=5)
-"""
-
-#generic curry in python
-
+c2 = c1(2, d = 4)               # Note that c is still unbound
+c3 = c2(3)(f = 6)(e = 5)        # now c = 3
+c3()                            # () forces the evaluation              <====
+                                #   it prints "1 2 3 4 5 6 100"
+c4 = c2(30)(f = 60)(e = 50)     # now c = 30
+c4()                            # () forces the evaluation              <====
+                                #   it prints "1 2 30 4 50 60 100"
 
